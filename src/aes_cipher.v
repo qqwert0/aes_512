@@ -1,6 +1,6 @@
 
 
-`include "timescale.v"
+`timescale 1ns / 1ps
 
 module aes_cipher(clk, rst, ld, done, key, text_in, text_out );
 input		clk, rst;
