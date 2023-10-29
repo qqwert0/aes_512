@@ -14,6 +14,7 @@ output reg 			data_out_valid;
 
 reg[11:0]			ld_r;
 reg [11:0]			ld;
+reg [127:0]			data_in_r;
 wire [11:0][127:0]	data_out_l0;
 reg [5:0][127:0]	data_out_l1;
 reg [1:0][127:0]	data_out_l2;
@@ -22,6 +23,7 @@ reg [5:0]			done_l1;
 reg [1:0]			done_l2;
 
 always@(posedge clk)begin
+	data_in_r		<= data_in;
 	if(rst)begin
 		ld		<= 0;
 		ld_r	<= 0;
@@ -97,7 +99,7 @@ generate
 			.ld(ld[i]), 
 			.done(done_l0[i]), 
 			.key(key), 
-			.text_in(data_in), 
+			.text_in(data_in_r), 
 			.text_out(data_out_l0[i])
 		);
 
